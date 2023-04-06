@@ -8,6 +8,7 @@
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     position: relative;
+    cursor: grab;
 
 }
 
@@ -17,7 +18,7 @@
         background-color: transparent;
         color: var(--black);
         position: absolute;
-        top: 2%;
+        top: -10%;
         left: 5%;
         font-size: 20px;
 }
@@ -29,8 +30,8 @@
         background-color: transparent;
         color: var(--black);
         position: absolute;
-        bottom: 2%;
-        right: 5%;
+        bottom: -10%;
+        right: 4%;
         font-size: 20px;
 }
 
@@ -61,6 +62,10 @@
     left: 50%;
     margin-left: -10px;
     margin-top: -10px;
+}
+
+.red {
+    color: rgb(206, 15, 15);
 }
 
 @media screen and (max-width: 471px) {
@@ -95,4 +100,4 @@
         right: 6%;
     }
 
-}
+}   
