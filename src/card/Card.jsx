@@ -7,6 +7,7 @@ const Card = ({suit, id}) => {
 
     const [{isDragging}, drag] = useDrag(() => ({
         type: "card",
+        item: {id: id, suit: suit},
         collect: (monitor) => ({
             isDragging: !!monitor.isDragging(),
         })
@@ -14,7 +15,7 @@ const Card = ({suit, id}) => {
 
   return (
     <div key={id} className={isDragging ? 'hide': ''} ref={drag}>
-    <Ace suit={suit} />
+        <Ace suit={suit} />
     </div>
   )
 }
