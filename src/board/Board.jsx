@@ -3,7 +3,7 @@ import Ace from '../ace/Ace'
 import Card from '../card/Card'
 import './board.css'
 import { useDrop } from 'react-dnd'
-import { BsSuitHeart } from "react-icons/bs";
+import { BsSuitHeart, BsSuitSpade, BsSuitDiamond, BsSuitClub } from "react-icons/bs";
 
 
 export const Board = () => {
@@ -41,7 +41,7 @@ export const Board = () => {
 
     const [{isOverSecond}, dropSecond] = useDrop(() => ({
         accept: "card",
-        drop: (item) => putCardInSecondArray(item.id),
+        drop: (item) => putCardInSecondArray(item.id, item.suit),
         collect: (monitor) => ({
             isOverSecond: !!monitor.isOver(),
         })
@@ -49,7 +49,7 @@ export const Board = () => {
 
     const [{isOverThird}, dropThird] = useDrop(() => ({
         accept: "card",
-        drop: (item) => putCardInThirdArray(item.id),
+        drop: (item) => putCardInThirdArray(item.id, item.suit),
         collect: (monitor) => ({
             isOverThird: !!monitor.isOver(),
         })
@@ -57,7 +57,7 @@ export const Board = () => {
 
     const [{isOverFourth}, dropFourth] = useDrop(() => ({
         accept: "card",
-        drop: (item) => putCardInFourthArray(item.id),
+        drop: (item) => putCardInFourthArray(item.id, item.suit),
         collect: (monitor) => ({
             isOverFourth: !!monitor.isOver(),
         })
@@ -78,27 +78,41 @@ export const Board = () => {
                    
     }
 
-    const putCardInSecondArray = (id) => {
-  
-         const newArray = listOfCards.filter(item => id === item.id)
-        setSecondList(secondList => [...secondList, newArray[0]])
-        const index = listOfCards.findIndex((obj) => obj.id === id) 
-        listOfCards.splice(index, 1)  
+    const putCardInSecondArray = (id, suit) => {
+        if(suit === "spades") {
+            const newArray = listOfCards.filter(item => id === item.id)
+            setSecondList(secondList => [...secondList, newArray[0]])
+            const index = listOfCards.findIndex((obj) => obj.id === id) 
+            listOfCards.splice(index, 1) 
+        } else {
+            return;
+        }
+     
     }
    
-    const putCardInThirdArray = (id) => {
+    const putCardInThirdArray = (id, suit) => {
+        if(suit === 'diamonds') {
+            const newArray = listOfCards.filter(item => id === item.id)
+            setThirdList(thirdList => [...thirdList, newArray[0]])
+            const index = listOfCards.findIndex((obj) => obj.id === id) 
+            listOfCards.splice(index, 1)  
+        } else {
+            return;
+        }
     
-        const newArray = listOfCards.filter(item => id === item.id)
-        setThirdList(thirdList => [...thirdList, newArray[0]])
-        const index = listOfCards.findIndex((obj) => obj.id === id) 
-        listOfCards.splice(index, 1)    
+      
     }
   
-    const putCardInFourthArray = (id) => {
-        const newArray = listOfCards.filter(item => id === item.id)
-        setFourthList(fourthList => [...fourthList, newArray[0]])
-        const index = listOfCards.findIndex((obj) => obj.id === id) 
-        listOfCards.splice(index, 1)    
+    const putCardInFourthArray = (id, suit) => {
+        if(suit === "clubs") {
+            const newArray = listOfCards.filter(item => id === item.id)
+            setFourthList(fourthList => [...fourthList, newArray[0]])
+            const index = listOfCards.findIndex((obj) => obj.id === id) 
+            listOfCards.splice(index, 1)  
+        } else {
+            return;
+        }
+       
     }
 
 
@@ -111,22 +125,25 @@ export const Board = () => {
     <div className='board'>
         <div className='drop-area'>
             <div className='drop-card' ref={drop}>
-                <BsSuitHeart className="heart-icon"/>
+                <BsSuitHeart className="icon"/>
                 {firstList.map((item) => {
                     return <Card suit={item.suit} id={item.id}/>
                 })}
             </div>
             <div className='drop-card' ref={dropSecond}>
+                <BsSuitSpade className="icon"/>
                 {secondList.map((item) => {
                     return <Card suit={item.suit} id={item.id} />
                 })}
             </div>
             <div className='drop-card' ref={dropThird}>
+                <BsSuitDiamond className='icon'/>
                 {thirdList.map((item) => {
                     return <Card suit={item.suit} id={item.id} />
                 })}
             </div>
             <div className='drop-card' ref={dropFourth}>
+                <BsSuitClub className='icon'/>
                 {fourthList.map((item) => {
                     return <Card suit={item.suit} id={item.id} />
                 })}
