@@ -1,5 +1,7 @@
 # Matching Aces
 
+[Play the game here](https://carinwood-matching-aces.netlify.app/)
+
 <img src="src/images/screenshotcards.png" width="600" />
 
 # About the game
