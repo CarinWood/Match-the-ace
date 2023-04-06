@@ -1,0 +1,98 @@
+.ace-frame {
+    margin-top: 10px;
+    width: 122px;
+    height: 165px;
+    padding: 3px;
+    font-size: 23px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    position: relative;
+
+}
+
+.ace-first-letter {
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        color: var(--black);
+        position: absolute;
+        top: 2%;
+        left: 5%;
+        font-size: 20px;
+}
+
+.ace-second-letter {
+        transform: rotate(180deg);
+        width: 20px;
+        height: 20px;
+        background-color: transparent;
+        color: var(--black);
+        position: absolute;
+        bottom: 2%;
+        right: 5%;
+        font-size: 20px;
+}
+
+.ace-first-symbol {
+    background: transparent;
+    font-size: 11px;
+    position: absolute;
+    left: 5%;
+    top: 17%;
+}
+
+.ace-second-symbol {
+    transform: rotate(180deg);
+    background: transparent;
+    font-size: 11px;
+    position: absolute;
+    right: 5%;
+    bottom: 17%;
+}
+
+.ace-middle-symbol {
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 471px) {
+    .ace-frame {
+        margin-top: 10px;
+        width: 88px;
+        height: 120px;
+        font-size: 23px;
+        position: relative!important;
+    }
+
+    .ace-first-letter {
+        width: 17px;
+        height: 17px;
+        font-size: 17px;
+    }
+    .ace-second-letter {
+        width: 17px;
+        height: 17px;
+        font-size: 17px;
+    }
+      
+    .ace-first-symbol {
+        font-size: 8px;
+        left: 6%;
+        top: 19%;
+    }
+
+    .ace-second-symbol {
+        font-size: 8px;
+        bottom: 19%;
+        right: 6%;
+    }
+
+}
